@@ -1,0 +1,103 @@
+<!DOCTYPE HTML>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<title>AJAX EXAMPLES</title>
+<link rel="stylesheet" href="style.css">
+<script src='script.js'></script>
+<style>
+
+body 
+{
+background-color: #f0f0f0; 
+animation: colorChange 10s infinite alternate; 
+}
+
+@keyframes colorChange 
+{
+0% 
+{
+background-color: #f0f0f0; 
+}
+50% 
+{
+background-color: #dcdcdc; 
+}
+100% 
+{
+background-color: #f0f0f0; 
+}
+}
+
+.container 
+{
+max-width: 600px;
+margin: 0 auto; 
+padding: 20px; 
+text-align: center; 
+}
+
+h1 
+{
+color: #333; 
+font-size: 28px; 
+}
+
+.select-wrapper 
+{
+margin-bottom: 20px; 
+}
+
+select 
+{
+padding: 10px; 
+font-size: 16px; 
+}
+
+.home-link 
+{
+display: inline-block; 
+padding: 10px 20px; 
+background-color: #007bff;
+color: #fff; 
+text-decoration: none;
+border-radius: 5px; 
+transition: background-color 0.3s; 
+}
+
+
+</style>
+<script>
+function populateDesignations()
+{
+$$$.ajax({
+"url":"servletOne",
+"methodType":"GET",
+"success":function(responseData){
+var designations=JSON.parse(responseData);
+$$$("designationCode").fillComboBox({
+"dataSource":designations,
+"text":"title",
+"value":"code",
+"firstOption":{
+"text":"<Select designation>",
+"value":"-1"
+}});
+},
+"failure":function(){
+alert("Some Problem");
+}
+});
+}
+window.addEventListener('load',populateDesignations);
+</script>
+</head>
+<body>
+<div class="container"> 
+<h1>Combo Box Example</h1>
+<div class="select-wrapper"> 
+<select id="designationCode"></select> 
+</div>
+</div>
+</body>
+</html>

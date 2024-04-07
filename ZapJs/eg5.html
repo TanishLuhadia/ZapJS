@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<title>Modal EXAMPLES - 2</title>
+<link rel="stylesheet" href="style.css">
+<style>
+</style>
+<script>
+function abBeforeOpening()
+{
+alert('Modal with ab is about to be opened');
+return true;
+}
+function abBeforeClosing()
+{
+alert('Modal with ab is about to be closed');
+return true;
+}
+function abOpened()
+{
+alert('Modal with ab is  opened');
+}
+function abClosed()
+{
+alert('Modal with ab is closed');
+}
+
+function createModal1()
+{
+$$$.modals.show("ab");
+}
+</script>
+<script src='script.js'></script>
+</head>
+<body>
+<button onclick='createModal1()'>Show First Modal</button>
+<div id='ab' forModal='true' size="200x300"  header="Some heading"  footer="Some footer"   maskColor="#3355ff" modalBackgroundColor="#549933" closeButton="true" afterOpening="abOpened()" afterClosing="abClosed()" beforeOpening="abBeforeOpening()" beforeClosing="abBeforeClosing()" >
+god is great<br>
+god is great<br>
+god is great<br>
+god is great<br>
+god is great<br>
+<input type='text' id='myTextBox' value='Great'>
+god is great<br>
+god is great<br>
+god is great<br>
+god is great<br>
+god is great<br>
+Last Line
+</div>
+
+
+</body>
+</html>
